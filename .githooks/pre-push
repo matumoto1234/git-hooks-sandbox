@@ -26,12 +26,9 @@ if is_matched:
   print(prefix + 'Push to remote ' + pushing_branch + ', continue? [y/N]', end=' ', flush=True)
 
   res = subprocess.run('exec < /dev/tty; read ANSWER; echo $ANSWER', shell=True, capture_output=True, text=True)
-  # res = subprocess.run('read ANSWER', shell=True, capture_output=True, text=True)
-  print('res', res.stdout, res.stderr)
-  print(res.returncode)
-  # answer = input()
+  answer = res.stdout
 
-  if answer[0] == 'n' or answer[0] == 'N':
+  if answer[0] == 'n' or answer[0] == 'N' or answer == '':
     print('OK. Push start.')
   else:
     exit(1)
