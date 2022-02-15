@@ -25,8 +25,8 @@ if is_matched:
   prefix = 'warning: '
   print(prefix + 'Push to remote ' + pushing_branch + ', continue? [y/N]')
 
-  # subprocess.run('exec < /dev/tty', shell=True)
-  exec('/dev/tty')
+  subprocess.run('exec < /dev/tty', shell=True)
+  subprocess.run('read ANSWER', shell=True)
   answer = input()
 
   if answer[0] == 'n' or answer[0] == 'N':
