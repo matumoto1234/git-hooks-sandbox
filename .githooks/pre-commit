@@ -5,7 +5,7 @@ result = subprocess.run('git rev-parse --abbrev-ref HEAD', shell=True, capture_o
 
 branch = result.stdout
 
-print(branch)
+print(branch == 'main')
 
 if branch == 'main':
   prefix = 'fatal: '
