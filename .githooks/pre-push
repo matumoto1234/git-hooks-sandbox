@@ -11,14 +11,14 @@ import re
 local_ref, local_sha1, remote_ref, remote_sha1 = input().split()
 
 
-pushing_branch = remote_ref.replace(old='refs/heads/', new='')
+pushing_branch = remote_ref.replace('refs/heads/', '')
 
 patterns = ['main']
 
 is_matched = False
 
 for pattern in patterns:
-  if re.match(pattern, pushing_branch) == None:
+  if re.match(pattern, pushing_branch) != None:
     is_matched = True
 
 if is_matched:
