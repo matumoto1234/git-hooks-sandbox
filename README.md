@@ -1,2 +1,5 @@
 # git-hooks-sandbox
-git hooks 
+
+```bash
+$ git config --local core.hooksPath .git_template/hooks
+```
