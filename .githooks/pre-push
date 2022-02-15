@@ -30,7 +30,7 @@ if is_matched:
 
   if answer == '\n' or answer[0] == 'n' or answer[0] == 'N':
     print('fatal: Cannceled')
-    exit(1)
+    exit(2)
   else:
     print('OK. Push start.')
 
