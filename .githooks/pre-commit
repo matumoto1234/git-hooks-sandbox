@@ -5,11 +5,7 @@ result = subprocess.run('git rev-parse --abbrev-ref HEAD', shell=True, capture_o
 
 branch = result.stdout
 
-print(branch)
-print(branch == 'main')
-print(branch == 'main\n')
-
-if branch == 'main':
+if branch == 'main\n':
   prefix = 'fatal: '
   print(prefix + 'Please do not commit to the main branch.')
   exit(1)
