@@ -13,7 +13,7 @@ local_ref, local_sha1, remote_ref, remote_sha1 = input().split()
 
 pushing_branch = remote_ref.replace('refs/heads/', '')
 
-patterns = ['hoge']
+patterns = ['main']
 
 is_matched = False
 
