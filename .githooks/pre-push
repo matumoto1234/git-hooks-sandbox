@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
 import re
+import subprocess
 
 # stdin: <local_ref> <local_sha1> <remote_ref> <remote_sha1>
 # sample:
@@ -9,7 +10,6 @@ import re
 #   remote_ref  = refs/heads/master
 #   remote_sha1 = efd4d512f34b11e3cf5c12433bbedd4b1532716f
 local_ref, local_sha1, remote_ref, remote_sha1 = input().split()
-
 
 pushing_branch = remote_ref.replace('refs/heads/', '')
 
@@ -23,9 +23,14 @@ for pattern in patterns:
 
 if is_matched:
   prefix = 'warning: '
-  print(prefix + 'Push to remote ' + pushing_branch + ', continue? [y/N]')
-  answer = input()
-  if answer[0] == 'n' or answer[0] == 'N':
-    print('OK. Push start.')
-  else:
+  print(prefix + 'Push to remote ' + pushing_branch + ', continue? [y/N]', end=' ', flush=True)
+
+  res = subprocess.run('exec < /dev/tty; read ANSWER; echo $ANSWER', shell=True, capture_output=True, text=True)
+  answer = res.stdout
+
+  if answer == '\n' or answer[0] == 'n' or answer[0] == 'N':
+    print('Push cancelled.')
     exit(1)
+  else:
+    print('OK. Push start.')
+
