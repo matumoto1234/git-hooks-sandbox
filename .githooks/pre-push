@@ -10,7 +10,6 @@ import re
 #   remote_sha1 = efd4d512f34b11e3cf5c12433bbedd4b1532716f
 local_ref, local_sha1, remote_ref, remote_sha1 = input().split()
 
-
 pushing_branch = remote_ref.replace('refs/heads/', '')
 
 patterns = ['main']
