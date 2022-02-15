@@ -23,7 +23,7 @@ for pattern in patterns:
 
 if is_matched:
   prefix = 'warning: '
-  print(prefix + 'Push to remote ' + pushing_branch + ', continue? [y/N]')
+  print(prefix + 'Push to remote ' + pushing_branch + ', continue? [y/N]', end=' ')
 
   res = subprocess.run('exec < /dev/tty; read ANSWER; echo $ANSWER', shell=True, capture_output=True, text=True)
   # res = subprocess.run('read ANSWER', shell=True, capture_output=True, text=True)
