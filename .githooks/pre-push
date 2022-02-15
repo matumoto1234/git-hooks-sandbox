@@ -29,6 +29,7 @@ if is_matched:
   answer = res.stdout
 
   if answer == '\n' or answer[0] == 'n' or answer[0] == 'N':
+    print('fatal: Cannceled')
     exit(1)
   else:
     print('OK. Push start.')
