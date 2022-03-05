@@ -1,21 +1,18 @@
-#!/usr/bin/python3
-import subprocess
+#!/usr/bin/env python3
 
-def verify_commit_branch() -> void:
-  result = subprocess.run('git rev-parse --abbrev-ref HEAD', shell=True, capture_output=True, text=True)
+def verify_commit_branch():
+    import subprocess
+    result = subprocess.run('git rev-parse --abbrev-ref HEAD', shell=True, capture_output=True, text=True)
 
-  branch = result.stdout
+    branch = result.stdout
 
-  if branch == 'main\n':
-    prefix = 'fatal: '
-    print(prefix + 'Please do not commit to the main branch.')
-    exit(1)
-
-
-def verify_linter() -> void:
-  subprocess.run('echo hoge')
-  subprocess.run('echo fuga')
+    if branch == 'main\n':
+        prefix = 'fatal: '
+        print(prefix + 'Please do not commit to the main branch.')
+        exit(1)
 
 
-verify_commit_branch()
-verify_linter()
+def main():
+    verify_commit_branch()
+
+main()
